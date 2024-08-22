@@ -1,0 +1,132 @@
+Documentación de la API de Repuestos
+
+Introducción
+  La API de repuestos te permite gestionar información  sobre piezas de automóviles. Puedes crear, leer, actualizar y eliminar repuestos utilizando los endpoints proporcionados.
+
+Endpoints Disponibles
+
+  CREAR UN NUEVO REPUESTO:
+
+    URL: POST repuestos/create
+
+    Parámetros del Body:
+      name(cadena, requerido): Nombre del Repuesto.
+      description(cadena, requerido): Descripción del Repuesto.
+      price(número, requerido): Precio del Repuesto.
+      imageURL(cadena): Link de la imagen del Repuesto.
+      createdAt:(fecha, requerido): Fecha en la que se creo el Repuesto.
+
+    Ejemplo de Solicitud:
+      JSON
+      {
+        "name": "Bujia",
+        "description": "Bujía de encendido para motores de 4 cilindros",
+        "price": 9.99,
+        "createdAt": 26-06-2024 5:00pm
+      }
+
+    Respuesta Exitosa(201):
+      {
+        "message": "Repuesto Creado Correctamente"
+        "repuesto": {
+          "name": "Bujia",
+          "description": "Bujía de encendido para motores de 4 cilindros",
+          "price": 9.99,
+          "createdAt": 26-06-2024 5:00pm
+        }
+      }
+
+  OBTENER TODOS LOS REPUESTOS:
+
+    URL: GET repuestos/
+
+    Descripción: Obtiene una lista de todos los Repuestos Registrados.
+
+    Respuesta Exitosa(200):
+      JSON
+        {
+          "message": "Todos los Repuestos",
+          "repuestos": [
+            {
+              "id": "1",
+              "name": "Filtro de aceite",
+              "description": "Filtro de aceite para motores de gasolina",
+              "price": 15.99
+              "createdAt": 15-06-2024 12:30pm
+            },
+            {
+              "id": "2",
+              "name": "Pastillas de freno",
+              "description": "Juego de pastillas de freno delanteras",
+              "price": 39.99
+              "createdAt": 15-06-2024 12:33pm
+            }
+            //... otros repuestos
+          ]
+        }
+
+  OBTENER UN REPUESTO POR SU ID:
+
+    URL: GET repuestos/:id
+
+    Parámetro de Ruta: id(cadena, requerido): ID del Repuesto.
+
+    Respuesta Exitosa(200):
+      JSON
+        {
+          "message": "Repuesto Encontrado",
+          "repuesto": {
+            "id": "1",
+            "name": "Filtro de aceite",
+            "description": "Filtro de aceite para motores de gasolina",
+            "price": 15.99
+            "createdAt": 15-06-2024 12:30pm
+          }
+        }
+
+  ACTUALIZAR UN REPUESTO EXISTENTE:
+
+    URL: PUT repuestos/update
+
+    Parámetro de Query: id(cadena, requerido): ID del Repuesto a Actualizar.
+
+    Parámetros del Body(Al menos uno requerido):
+      - name(cadena): Nuevo Nombre del Repuesto.
+      - description(cadena): Nueva Descripción del Repuesto.
+      - price(número): Nuevo precio del Repuesto.
+    
+    Ejemplo de Solicitud:
+      JSON
+        {
+          "price": 12.99
+        }
+
+    Respuesta Exitosa(202):
+      JSON
+        {
+          "message": "Repuesto Actualizado Correctamente",
+          "repuesto": {
+            "id": "1",
+            "name": "Filtro de aceite",
+            "description": "Filtro de aceite para motores de gasolina",
+            "price": 12.99
+          }
+        }
+
+  ELIMINAR UN REPUESTO:
+
+    URL: repuestos/delete
+
+    Parámetro de Query: id(cadena, requerido): ID del Repuesto a Eliminar.
+
+    Respuesta Exitosa(200):
+      JSON
+        {
+          "message": "Repuesto Eliminado Correctamente",
+          "repuesto": {
+            "id": "1",
+            "name": "Filtro de aceite",
+            "description": "Filtro de aceite para motores de gasolina",
+            "price": 12.99
+          }
+        }

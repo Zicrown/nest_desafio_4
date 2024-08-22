@@ -1,0 +1,11 @@
+Se le pide a conitnuacion que agregue a su API la logica del manejo de usuario y su autenticacion
+
+1.- Cree los recursos para el manejo de informacion de usuarios
+
+2.- Establezca el DTO, la interface y el schema para los usuarios.
+
+3.- Establezca la conexion a la base de datos para la coleccion de usuarios en el archivo module de los recursos del usuario
+
+4.- Configure metodos que le permitan verificar si un usuario existe en la base de datos. Estos metodos deben estar agregados en el "service" del usuario. Establezca ademas las rutas de "login" y "register" para los usuarios en el controller de los recursos del usuario.
+
+5.- Establezca un encriptamiento de la contraseña y devolucion de informacion del usuario en formato jwt para cuando el usuario confirme sus datos en el login.
